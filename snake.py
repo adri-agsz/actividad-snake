@@ -10,12 +10,16 @@ Exercises
 
 from random import randrange
 from turtle import *
+import random
 
 from freegames import square, vector
 
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
+colors = ["blue", "black", "yellow", "green", "orange"]
+color_snake = random.choice(colors)
+color_food = random.choice(colors)
 
 
 def change(x, y):
@@ -30,6 +34,7 @@ def inside(head):
 
 
 def move():
+
     """Move snake forward one segment."""
     head = snake[-1].copy()
     head.move(aim)
@@ -51,9 +56,9 @@ def move():
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        square(body.x, body.y, 9, color_snake)
 
-    square(food.x, food.y, 9, 'green')
+    square(food.x, food.y, 9, color_food)
     update()
     ontimer(move, 100)
 
